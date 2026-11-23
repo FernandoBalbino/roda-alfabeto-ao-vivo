@@ -1,0 +1,26 @@
+# Só o servidor de tempo real roda no Render (free). As telas ficam no GitHub Pages.
+services:
+  - type: web
+    name: roda-alfabeto-ao-vivo
+    runtime: node
+    plan: free
+    region: virginia
+    branch: main
+    buildCommand: npm ci --omit=dev
+    startCommand: node server/index.ts
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    buildFilter:
+      paths:
+        - server/**
+        - shared/**
+        - package.json
+        - package-lock.json
+        - render.yaml
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: https://fernandobalbino.github.io
