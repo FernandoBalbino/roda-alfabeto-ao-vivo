@@ -147,8 +147,8 @@ try {
   await wait(900);
   await shot(tv, '17-tv-trio-1-completo');
   await tvBtn(tv, /Próximo trio/);
-  await wait(400); // o trio novo substitui o anterior
-  await tv.locator('.rv-card:nth-child(3):is(.is-ok, .is-bad)').waitFor();
+  await wait(400); // o trio novo substitui o anterior (o último trio pode ter 1 ou 2 cards)
+  await tv.locator('.rv-card:last-child:is(.is-ok, .is-bad)').waitFor();
   await wait(900);
   await shot(tv, '18-tv-trio-2');
   await kid.locator('.p-result').waitFor({ timeout: 60_000 });

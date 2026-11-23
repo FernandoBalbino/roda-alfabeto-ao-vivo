@@ -136,7 +136,7 @@ function Lobby({ room, onExit }: { room: PublicRoom; onExit: () => void }) {
             })}
           </button>
           <p className="muted small">
-            {active.length} letras · {chosen ? `${chosen} com definição escolhida, ` : ''}{active.length - chosen} sorteadas
+            {active.length} letras · {chosen ? `${chosen} com definição escolhida, ` : ''}{active.length - chosen} {active.length - chosen === 1 ? 'sorteada' : 'sorteadas'}
           </p>
           <button className="btn btn-sm" onClick={() => setEditing(true)}>Escolher definição e tempo de cada letra</button>
         </div>
